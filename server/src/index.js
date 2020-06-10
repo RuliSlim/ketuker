@@ -12,7 +12,7 @@ const startServer = async () => {
     context: ({ req, res }) => ({ req, res })
   });
 
-  mongoose.connect('mongodb://localhost:27017/ketuker', {
+  mongoose.connect('mongodb+srv://admin:kiz2lnxS338wmJwJ@cluster0-ujwhx.mongodb.net/ketuker?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -20,7 +20,6 @@ const startServer = async () => {
   });
 
   const app = express();
-
   app.use(
     session({
       secret: 'asdjlfkaasdfkjlads',
