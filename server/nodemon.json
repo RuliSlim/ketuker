@@ -1,6 +1,0 @@
-{
-  "env": {
-    "JWT_SECRET": "rahasia",
-    "SALT": 10
-  }
-}
