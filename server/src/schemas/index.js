@@ -8,7 +8,7 @@ import redis from '../utilities/redis';
 import User from '../models/User';
 import Product from '../models/Product';
 import { authen, author } from '../utilities/authenticagtion';
-import Transaction from '../models/Transaction';
+import Transaction from '../models/Transaction'; 
 
 export const typeDefs = gql`
   type User {
