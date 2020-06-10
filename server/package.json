@@ -9,9 +9,6 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "dev": "nodemon --exec npx babel-node src/index.js",
-    "clean": "rm -rf build && mkdir build",
-    "build-babel": "babel -d ./build ./src -s",
-    "build": "npm run clean && npm run build-babel",
     "start": "node ./src/index.js"
   },
   "author": "",
