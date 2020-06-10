@@ -1,7 +1,11 @@
 const puppeteer = require('puppeteer');
-async function getTokoPedia(item) {
+async function getTokoPedia (item) {
   let processedItem = item.split(' ').join('%20');
-  const browser = await puppeteer.launch({ headless: false }); // for test disable the headlels mode,
+  const browser = await puppeteer.launch({ headless: true, 
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+    ] }); // for test disable the headlels mode,
   const page = await browser.newPage();
 
   await page.setDefaultNavigationTimeout(0);
