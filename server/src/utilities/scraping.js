@@ -1,7 +1,8 @@
 const puppeteer = require('puppeteer');
 async function getTokoPedia (item) {
   let processedItem = item.split(' ').join('%20');
-  const browser = await puppeteer.launch({ headless: true, 
+  const browser = await puppeteer.launch({ 
+    headless: true,
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
@@ -11,20 +12,20 @@ async function getTokoPedia (item) {
   await page.setDefaultNavigationTimeout(0);
 
   await page.setViewport({ width: 1000, height: 926 });
-  await page.goto(`https://www.tokopedia.com/search?st=product&q=${processedItem}`, {
-    waitUntil: 'networkidle2',
+  const data = await page.goto(`https://www.olx.co.id/items/q-${processedItem}?sorting=desc-relevance`, {
+    waitUntil: 'networkidle2', timeout: 0
   });
 
   /** @type {string[]} */
   const productNames = await page.evaluate(() => {
     const div = document.querySelectorAll(
-      '#zeus-root > div > div.css-jau1bt > div > div.css-rjanld > div.css-jza1fo > div.css-1g20a2m'
+      ' div.IKo3_'
     );
-
+    
     const productnames = [];
     div.forEach((element) => {
-      const titleelem = element.querySelector('.css-1bjwylw').textContent;
-      const priceitem = element.querySelector('.css-1beg0o7').textContent;
+      const titleelem = element.querySelector('._2tW1I').textContent;
+      const priceitem = element.querySelector('._89yzn').textContent;
       if (priceitem != null && titleelem != null) {
         productnames.push({
           title: titleelem,
@@ -35,8 +36,6 @@ async function getTokoPedia (item) {
     // titleelem != null &&
     return productnames;
   });
-
-  // console.log(productNames);
   browser.close();
   return productNames;
 }

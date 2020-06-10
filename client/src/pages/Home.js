@@ -15,14 +15,14 @@ import SliderApp from '../components/Slider';
 export default function Home () {
   const { search } = useLocation();
   const history = useHistory();
-  const { loading, error, data } = useQuery(GET_ALL_PRODUCT_Filter, { variables: { where: 'false' } , fetchPolicy: 'cache-and-network' });
+  const { loading, error, data } = useQuery(GET_ALL_PRODUCT, { fetchPolicy: 'cache-and-network' });
   const [ page, setPage ] = useState(search ? Number(search.slice(6)) : 1);
   const [ products, setProducts ] = useState([]);
   const [ allProd, setAll ] = useState();
 
   useEffect(() => {
     if(data) {
-      const notMine = data.getProductsFilter.filter((el) => el.userId != localStorage.getItem('user_id'));
+      const notMine = data.getProducts.filter((el) => el.userId != localStorage.getItem('user_id') && el.submit == false);
       console.log(notMine)
       setAll(notMine);
       if(search.substr(0, 7) == '?filter') {
@@ -71,7 +71,7 @@ export default function Home () {
           </div>
           <div className="home-load-more-container">
             {
-              allProd && products.length < allProd.length && (data.getProductsFilter.length > 9) && 
+              allProd && products.length < allProd.length && (data.getProducts.length > 9) && 
               <LoadMoreButton page={nextPage}/>
             }
           </div>

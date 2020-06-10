@@ -9,6 +9,8 @@ const startServer = async () => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
+    introspection: true,
+    playground: true,
     context: ({ req, res }) => ({ req, res })
   });
 
@@ -30,15 +32,16 @@ const startServer = async () => {
 
   server.applyMiddleware({
     app,
+    path: '/',
     cors: {
       credentials: true,
-      origin: 'https://ketuker.herokuapp.com/'
     }
   }); 
-
-  app.listen({ port: process.env.PORT || 4000 }, (url) =>
-    console.log(`🚀 Server ready at ${url}`)
-  );
+  const PORT = process.env.PORT || 4000;
+  app.listen({ port:  PORT }, () => {
+    console.log(PORT);
+    console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`);
+  });
 };
 
 startServer();

@@ -176,7 +176,7 @@ export const resolvers = {
     getProducts: async () => {
       const getProducts = JSON.parse(await redis.get('products'));
       if (getProducts) {
-        return getProducts;
+        return getProducts; 
       } else {
         const getAllProducts = await Product.find();
         await redis.set('products', JSON.stringify(getAllProducts));
