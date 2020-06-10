@@ -1,0 +1,115 @@
+.delete-page {
+    position: relative;
+    border: 3px solid #f1f1f1;
+    z-index: 1;
+    width: 300px;
+    height: auto;
+    background-color: #FFF;
+    box-shadow: 5px 10px #888888
+}
+
+.delete-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0px;
+    background-color: black;
+    color: white;
+}
+
+.delete-content {
+    font-size: 20px;
+    padding: 10px 10px;
+    text-align: center;
+}
+
+.delete-button button{
+    font-weight: bold;
+    border: solid grey;
+    border-width: 1px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.edititem {
+    background-color: white;
+    text-align: center;
+    padding: 20px 20px;
+    max-width: 1000px;
+    margin: 40px auto;
+    color: black;
+}
+
+.title-edititem {
+    font-size: 40px;
+    font-weight: 800;
+    margin-top: 20px
+}
+
+.flex-edititem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.form-edititem {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10px 10px;
+    width: 400px;
+}
+
+.input-edititem {
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: black;
+    background-color: rgb(240, 240, 240);
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 10px
+}
+
+.textarea-edititem {
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: black;
+    background-color: rgb(240, 240, 240);
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 10px
+}
+
+.category-edititem {
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: black;
+    background-color: rgb(240, 240, 240);
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 20px;
+    height: 40px
+}
+
+.btn-edititem {
+    height: 60px;
+    color: white;
+    background-color: black;
+    transition: 0.3s;
+    font-size: 24px;
+    margin-top: 20px;
+    transition: 0.3s
+}
+
+.img-edititem {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 20px 20px;
+    padding: 10px 10px;
+    border: solid rgb(29, 29, 29);
+}

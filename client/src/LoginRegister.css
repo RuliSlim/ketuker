@@ -1,0 +1,177 @@
+.login {
+    background-color: white;
+    text-align: center;
+    width: 500px;
+    margin: 40px auto;
+    border: solid black;
+    padding-bottom: 20px;
+    color : black;
+}
+
+.title-login {
+    color: black;
+    font-size: 50px;
+    font-weight: 800;
+}
+
+.div-form {
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.form-login {
+    display: inline-block;
+    margin: center auto;
+    text-align: center;
+    width: 500px;
+    height: 250px;
+}
+
+.input-login {
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: black;
+    background: transparent;
+    font-size: 18px;
+    width: 400px;
+    height: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.btn-login {
+    width : 400px;
+    height: 60px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: black;
+    transition: 0.3s
+}
+
+.btn-login:hover {
+    background-color: white;
+    border: solid black;
+    color: black;
+}
+
+.footer-login {
+    color: black
+}
+
+.register {
+    padding: 50px 0 100px;
+    text-align: center;
+    max-width: 900px;
+    margin: 40px auto;
+    padding-bottom: 10px;
+    color: black;
+    flex-wrap: wrap;
+    border: solid black;
+}
+
+.title-register {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.div-register {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.form-register {
+    display: inline-block;
+    margin: center auto;
+    text-align: center;
+    width: 500px;
+    height: 500px;
+}
+
+.input-upload-register{
+    font-size: 18px;
+}
+
+.input-register {
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: black;
+    background: transparent;
+    font-size: 18px;
+    width: 400px;
+    height: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+
+.btn-register {
+    width : 400px;
+    height: 60px;
+    border: none;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+    transition: 0.3s
+}
+
+.btn-register:hover {
+    background-color: white;
+    border: solid black;
+    color: black;
+}
+
+.form-upload-register {
+    display: inline-block;
+    margin: center auto;
+    text-align: center;
+    width: 300px;
+    height: 500px;
+}
+
+.title-upload-register {
+    color: white;
+    background-color:  #595959;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.input-upload-register {
+    width: 300px;
+    height : 50px;
+}
+
+.btn-upload-register{
+    width: 300px;
+    height: 50px;
+    border: none;
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+    transition: 0.3s
+}
+
+.btn-upload-register:hover {
+    background-color: white;
+    border: solid black;
+    color: black;
+}
+
+.img-avatar {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 20px 20px;
+    padding: 10px 10px;
+    border-radius: 50%;
+}
+
+.footer-register {
+    margin-top: 20px;
+}

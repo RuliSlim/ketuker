@@ -1,0 +1,10 @@
+export { default as Register } from './Register';
+export { default as Login } from './Login';
+export { default as AddItem } from './AddItem';
+export { default as Category } from './Category';
+export { default as DetailItemCustomer } from './DetailItemCustomer';
+export { default as DetailItemUser } from './DetailItemUser';
+export { default as EditItem } from './EditItem';
+export { default as Home } from './Home';
+export { default as User } from './User';
+export { default as FAQ } from './FAQ';
