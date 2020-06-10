@@ -50,6 +50,7 @@ export default function Home () {
   }
 
   if(error) {
+    console.log(error, ',mnjfa')
     return <CompError message={error.message}></CompError>;
   }
 

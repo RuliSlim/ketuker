@@ -185,12 +185,15 @@ export const resolvers = {
     },
     getProductsFilter: async (_, { where }) => {
       const products = JSON.parse(await redis.get('products'));
-      const getProducts = products.filter(el => el.submit == where);
-      if (getProducts.length) {
-        return getProducts;
+      if (products) {
+        const getProducts = products.filter(el => el.submit == where);
+        if (getProducts.length) {
+          return getProducts;
+        } 
       } else {
+        const setRedist = await Product.find();
+        await redis.set('products', JSON.stringify(setRedist));
         const getAllProducts = await Product.find({ submit: where });
-        await redis.set('products', JSON.stringify(getAllProducts));
         return getAllProducts;
       }
     },
@@ -332,25 +335,30 @@ export const resolvers = {
   },
   Mutation: {
     register: async (_, { input }) => {
-      const newUser = new User(input);
-      const error = newUser.validateSync();
-      if (error) {
-        if (error.errors.password) {
-          throw new Error(error.errors.password.properties.message);
+      try {
+        const newUser = new User(input);
+        const error = await newUser.validate();
+        if (error) {
+          if (error.errors.password) {
+            throw new Error(error.errors.password.properties.message);
+          } else {
+            throw new Error(error.errors.phone.properties.message);
+          }
         } else {
-          throw new Error(error.errors.phone.properties.message);
+          const res = await newUser.save();
+          const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
+          const users = JSON.parse(await redis.get('users'));
+          if (users) {
+            users.push(newUser);
+            await redis.set('users', JSON.stringify(users));
+          } else {
+            await redis.set('users', JSON.stringify([ res ]));
+          }
+          return { _id: res._id, ...res._doc, token };
         }
-      } else {
-        const res = await newUser.save();
-        const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
-        const users = JSON.parse(await redis.get('users'));
-        if (users) {
-          users.push(newUser);
-          await redis.set('users', JSON.stringify(users));
-        } else {
-          await redis.set('users', JSON.stringify([ res ]));
-        }
-        return { _id: res._id, ...res._doc, token };
+      } catch (error) {
+        console.log(error, 'erro');
+        return error;
       }
     },
     login: async (_, { input }) => {
@@ -533,14 +541,19 @@ export const resolvers = {
         let data;
         for (let el of updateTransaction.productOriginal) {
           data = await Product.findOne({ _id: el._id });
-          if (data.submit) throw new Error('Barang kamu sudah tertukar');
+          if (data.submit) {
+            target.submit = false;
+            await target.save();
+            throw new Error('Barang kamu sudah tertukar');
+          }
           data.submit = true;
           await data.save();
         }
         updateTransaction.productTarget[0].submit = input;
         updateTransaction.productOriginal.forEach(el => el.submit = input);
         await updateTransaction.save();
-        const newPro = Product.find();
+        const newPro = await Product.find();
+        console.log(newPro, 'ini new prod');
         redis.set('products', JSON.stringify(newPro));
         return updateTransaction;
       } catch (error) {

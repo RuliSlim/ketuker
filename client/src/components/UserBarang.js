@@ -97,6 +97,12 @@ export default function UserBarang ({ product }) {
     </div> */}
 
     <div class="aneh">
+        {product.submit && 
+          <img 
+          className="approved checked tertukar"
+          src="https://www.onlygfx.com/wp-content/uploads/2016/09/green-approved-stamp-1-1024x772.png" 
+          alt="item"/>
+        }
         <div class="container" style={product.submit ? {background: `url(${product.image })`, backgroundSize: 'cover', filter: 'grayscale(1) opacity(.8)'} : {background: `url(${product.image })`, backgroundSize: 'cover'}}>
         <div class="overlay">
           <div class = "items"></div>

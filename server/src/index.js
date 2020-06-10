@@ -16,6 +16,7 @@ const startServer = async () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
+    audoIndex: true
   });
 
   const app = express();

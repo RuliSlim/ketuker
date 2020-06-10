@@ -719,6 +719,12 @@ h2,h1{
   height: 400px;
 }
 
+.tertukar {
+  position: relative;
+  top: 300px;
+  left: 12px;
+}
+
 .unChecked {
   display: inline-block;
   width: 250px;
